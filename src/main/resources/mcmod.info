@@ -1,0 +1,21 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "InstaBoom",
+    "name": "Insta Boom",
+    "description": "Gives creepers a chance to instantly explode when they are attacked by a player.",
+    "version": "1.8.9-1.0.0",
+    "mcversion": "1.8.9",
+    "url": "http://minecraft.curseforge.com/projects/insta-boom",
+    "updateUrl": "",
+    "authorList": [ "AKTheKnight" ],
+    "credits": "Authored by AKTheKnight, idea by sadpwner",
+    "logoFile": "",
+    "screenshots": [],
+    "parent": "",
+    "requiredMods": [ "Forge" ],
+    "dependencies": [],
+    "dependants": [],
+    "useDependencyInformation": false
+  }]
+}
