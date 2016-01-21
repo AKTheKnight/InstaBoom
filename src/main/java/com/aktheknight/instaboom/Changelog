@@ -4,3 +4,4 @@ Changelog:
 1.0.1
 	Updated mcmod.info to work
 	Fixed logger
+	Changed explosion to be based on custom creeper explosion

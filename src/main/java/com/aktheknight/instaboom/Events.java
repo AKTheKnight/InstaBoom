@@ -1,7 +1,9 @@
 package com.aktheknight.instaboom;
 
+import java.lang.reflect.Method;
 import java.util.Random;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,18 +30,28 @@ public class Events {
 		}
 	}
 	
-	public void isCreeper(Entity creeper) {
+	public void isCreeper(Entity entity) {
 //		LOGGER.log(Level.FINEST, "Entity was a creeper");
 		if(chance(InstaBoom.creeperExplodeChance)) {
-//			double x = creeper.posX;
-//			double y = creeper.posY;
-//			double z = creeper.posZ;
+			EntityCreeper creeper = (EntityCreeper) entity;
 			
-			Explosion explosion = new Explosion(creeper.worldObj, null, creeper.posX, creeper.posY, creeper.posZ, 4.0F, false, true);
-			explosion.doExplosionA();
-			explosion.doExplosionB(true);
+			Class<?> noparams[] = {};
+			Object[] paramnone = {};
 			
-			creeper.setDead();
+			try {
+				Method explode = creeper.getClass().getDeclaredMethod("explode", noparams);
+				explode.setAccessible(true);
+				explode.invoke(creeper, paramnone);
+			} 
+			catch (Exception e) {
+				LOGGER.log(Level.ERROR, "Unable to access explode method for creeper");
+				LOGGER.log(Level.INFO, "Fired default explosion size");
+				Explosion explosion = new Explosion(creeper.worldObj, null, creeper.posX, creeper.posY, creeper.posZ, 3.0F, false, true);
+				explosion.doExplosionA();
+				explosion.doExplosionB(true);
+				
+				creeper.setDead();
+			}
 		}
 	}
 	
