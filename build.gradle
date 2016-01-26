@@ -20,12 +20,12 @@ plugins {
 }
 */
 
-version = "1.8.9-1.0.1"
+version = "1.8.9-1.0.2"
 group= "com.aktheknight.instaboom" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "InstaBoom"
 
 minecraft {
-    version = "1.8.9-11.15.0.1664"
+    version = "1.8.9-11.15.1.1722"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

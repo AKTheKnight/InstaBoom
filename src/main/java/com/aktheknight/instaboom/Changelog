@@ -5,3 +5,5 @@ Changelog:
 	Updated mcmod.info to work
 	Fixed logger
 	Changed explosion to be based on custom creeper explosion
+1.0.2
+	Stopped events firing if player is in creative mode
