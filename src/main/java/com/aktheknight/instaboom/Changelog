@@ -7,3 +7,5 @@ Changelog:
 	Changed explosion to be based on custom creeper explosion
 1.0.2
 	Stopped events firing if player is in creative mode
+1.0.3
+	Mod no longer required on client side for multiplayer

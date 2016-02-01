@@ -20,7 +20,7 @@ plugins {
 }
 */
 
-version = "1.8.9-1.0.2"
+version = "1.8.9-1.0.3"
 group= "com.aktheknight.instaboom" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "InstaBoom"
 
