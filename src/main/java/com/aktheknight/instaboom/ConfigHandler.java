@@ -20,17 +20,17 @@ public class ConfigHandler {
 		
 	}
 	    
-	private static void loadConfig() {
+	static void loadConfig() {
 //		loadGeneralSettings();
-		loadCreeperSettings();
+		loadGeneralSettings();
 		if (config.hasChanged()) {
 			config.save();
 		}
 	}
 	
-	private static void loadCreeperSettings() {
-		config.setCategoryPropertyOrder("Creeper" , configOrder);
-		category = "Creeper";
+	private static void loadGeneralSettings() {
+		config.setCategoryPropertyOrder(Configuration.CATEGORY_GENERAL , configOrder);
+		category = Configuration.CATEGORY_GENERAL;
 		InstaBoom.creeper = config.getBoolean("CreeperInstaBoom", category, true, "Do you want to enable creepers instantly exploding?");
 		InstaBoom.creeperExplodeChance = config.getInt("CreeperChance", category, 5, 1, 20, "1 over the chance of an instant creeper explosion.");
 	}

@@ -21,17 +21,17 @@ public class Events {
 	
 	@SubscribeEvent
 	public void AttackEntity(AttackEntityEvent event) {
-		if (!event.target.worldObj.isRemote && !event.entityPlayer.capabilities.isCreativeMode) {
+		if (!event.getTarget().worldObj.isRemote && !event.getEntityPlayer().capabilities.isCreativeMode) {
 //			LOGGER.log(Level.FINEST, "Fired AttackEntityEvent");
-			if (event.target instanceof EntityCreeper && InstaBoom.creeper) {
-				isCreeper(event.target);
+			if (event.getTarget() instanceof EntityCreeper && InstaBoom.creeper) {
+				isCreeper(event.getTarget());
 			}
 			return;
 		}
 	}
 	
 	public void isCreeper(Entity entity) {
-//		LOGGER.log(Level.FINEST, "Entity was a creeper");
+		//LOGGER.log(Level.INFO, "Entity was a creeper");
 		if(chance(InstaBoom.creeperExplodeChance)) {
 			EntityCreeper creeper = (EntityCreeper) entity;
 			
@@ -39,12 +39,14 @@ public class Events {
 			Object[] paramnone = {};
 			
 			try {
+                //LOGGER.log(Level.INFO, "Trying to explode");
 				Method explode = creeper.getClass().getDeclaredMethod("explode", noparams);
 				explode.setAccessible(true);
 				explode.invoke(creeper, paramnone);
 			} 
 			catch (Exception e) {
 				LOGGER.log(Level.ERROR, "Unable to access explode method for creeper");
+                LOGGER.log(Level.ERROR, "Report to AK for help");
 				LOGGER.log(Level.INFO, "Fired default explosion size");
 				Explosion explosion = new Explosion(creeper.worldObj, null, creeper.posX, creeper.posY, creeper.posZ, 3.0F, false, true);
 				explosion.doExplosionA();
